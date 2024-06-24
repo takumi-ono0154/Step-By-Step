@@ -64,7 +64,30 @@
 
 ### ■ 機能の実装方針予定
 
-#### LINE Messaging API SDK for Ruby
+#### 実装環境
+- Ruby: 3.3.3
+- Rails: 7.1.3.4
+- データベース: MySQL 8.0.37
 
-- 週初めの習慣目標をリマインドする
-- ユーザーが設定した時間にリマインドする
+#### API
+- LINE Messaging API SDK for Ruby
+
+#### GEM
+- gem 'sorcery', '~> 0.17.0' <br>
+  会員登録
+- gem 'pundit', '~> 2.3', '>= 2.3.2'<br>
+  アクセス制御
+- gem 'bootstrap', '~> 5.3', '>= 5.3.3'<br>
+  デザイン
+- gem 'mysql2', '~> 0.5.6'<br>
+  RDBMS
+- gem 'whenever', '~> 1.0'<br>
+  LINE通知する際に使用
+- gem 'simple_form', '~> 5.3', '>= 5.3.1'<br>
+  フォームの作成を簡易化
+- gem 'rspec-rails', '~> 6.1', '>= 6.1.3'<br>
+  RSpecテスト
+- gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3' Rails<br>
+  テストデータ作成
+- gem 'capybara', '~> 3.40'<br>
+  テスト用
