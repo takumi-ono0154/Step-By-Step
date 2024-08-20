@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body, html {
+  width: 375px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
