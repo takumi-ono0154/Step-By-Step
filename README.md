@@ -51,8 +51,8 @@
 ### ■ 機能の実装方針予定
 #### 実装環境
 - Ruby: 3.3.3
-- Rails: 7.1.3.4
-- データベース: MySQL 8.0.37
+- Rails: 7.2.0
+- データベース: postgresql
 #### API
 - LINE Messaging API SDK for Ruby
 #### GEM
