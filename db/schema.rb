@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_23_001313) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_23_001933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "habits", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.date "target_date", null: false
+    t.integer "target_frequency", null: false
+    t.integer "target_volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -22,4 +32,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_001313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "habits", "users"
 end
