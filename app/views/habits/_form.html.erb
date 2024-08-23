@@ -11,32 +11,68 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
+  <div class="flex flex-col items-center space-y-6">
+    <div class="w-full max-w-xs p-2">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">習慣化したいことは？</span>
+        </label><br>
+        <input type="text" placeholder="ex 筋トレ" class="input input-bordered w-full" />
+      </div>
+    </div>
+
+    <div class="w-full max-w-xs p-2">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">週に何回行う？</span>
+        </label><br>
+        <select class="select select-bordered w-full">
+          <option disabled selected>週〜回</option>
+          <option>週1回</option>
+          <option>週2回</option>
+          <option>週3回</option>
+          <option>週4回</option>
+          <option>週5回</option>
+          <option>週6回</option>
+          <option>週7回</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="w-full max-w-xs p-2">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">いつまでに？</span>
+        </label><br>
+        <%= form.date_field :sample_at, class: "input input-bordered w-full" %>
+      </div>
+    </div>
+
+    <div class="w-full max-w-xs p-2">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">どのくらいの時間行う？</span>
+        </label>
+        <div class="flex space-x-2">
+          <select class="select select-bordered w-1/2">
+            <option value="" disabled selected>時間</option>
+            <% (0..23).each do |hour| %>
+              <option value="<%= hour %>"><%= hour %> 時間</option>
+            <% end %>
+          </select>
+          <select class="select select-bordered w-1/2">
+            <option value="" disabled selected>分</option>
+            <% (0..59).each do |minute| %>
+              <option value="<%= minute %>"><%= minute %> 分</option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-8 mb-4 p-2">
+      <button class="btn btn-active btn-secondary">確認画面へ</button>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :target_date, style: "display: block" %>
-    <%= form.date_field :target_date %>
-  </div>
-
-  <div>
-    <%= form.label :target_frequency, style: "display: block" %>
-    <%= form.number_field :target_frequency %>
-  </div>
-
-  <div>
-    <%= form.label :target_volume, style: "display: block" %>
-    <%= form.number_field :target_volume %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

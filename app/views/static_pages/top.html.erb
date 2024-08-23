@@ -12,6 +12,8 @@
     <p>(所要時間1分程度)</p>
   </div>
   <div class="flex justify-center mt-8">
-    <button class="btn btn-active btn-secondary">START!</button>
+    <%= link_to new_habit_path, class: "btn btn-active btn-secondary" do %>
+      START!
+    <% end %>
   </div>
 </div>
