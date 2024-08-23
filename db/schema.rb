@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_23_001933) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_23_003707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "habits", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "name", null: false
+    t.string "name", limit: 255, null: false
     t.date "target_date", null: false
     t.integer "target_frequency", null: false
     t.integer "target_volume"
@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_001933) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
+    t.string "name", limit: 255, null: false
+    t.string "email", limit: 255, null: false
     t.string "crypted_password", null: false
     t.string "salt", null: false
     t.datetime "created_at", null: false
