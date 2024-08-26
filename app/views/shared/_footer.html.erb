@@ -1,8 +1,8 @@
 <footer class="footer footer-center bg-base-300 text-base-content rounded p-3">
   <nav class="grid grid-flow-col gap-5">
-    <a class="link link-hover">利用規約</a>
-    <a class="link link-hover">プライバシーポリシー</a>
-    <a class="link link-hover">お問い合わせ</a>
+    <%= link_to '利用規約', '#', class: 'link link-hover' %>
+    <%= link_to 'プライバシーポリシー', '#', class: 'link link-hover' %>
+    <%= link_to 'お問い合わせ', '#', class: 'link link-hover' %>
   </nav>
   <aside>
     <p>Copyright © <%= Time.now.year %> - Step By Step - All rights reserved.</p>
