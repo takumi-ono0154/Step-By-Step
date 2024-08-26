@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :habits do
     collection do
-      post 'confirm'
+      post "confirm"
     end
   end
   resources :users
