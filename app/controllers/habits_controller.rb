@@ -15,6 +15,16 @@ class HabitsController < ApplicationController
     @habit = Habit.new
   end
 
+  def confirm
+    @habit = Habit.new(habit_params)
+    if @habit.valid?
+      # 確認ページに表示するために、保存せずにrenderする
+      render :confirm
+    else
+      render :new
+    end
+  end
+
   # GET /habits/1/edit
   def edit
   end
