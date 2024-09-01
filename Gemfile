@@ -38,7 +38,7 @@ gem "bootsnap", require: false
 
 gem "net-pop", "~> 0.1.2"
 
-gem 'devise'
+gem "devise"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

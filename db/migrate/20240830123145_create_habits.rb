@@ -5,7 +5,7 @@ class CreateHabits < ActiveRecord::Migration[7.2]
       t.date :target_date, null: false
       t.integer :target_frequency, null: false
       t.integer :target_volume
-      
+
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
