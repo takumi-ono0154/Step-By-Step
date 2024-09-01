@@ -18,15 +18,20 @@
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Homepage</a></li>
-        <li><a>Portfolio</a></li>
-        <li><a>About</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'マイページ', user_path(current_user), class: 'link link-hover' %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'link link-hover' %></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: 'link' %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: 'link' %></li>
+        <% end %>
       </ul>
     </div>
   </div>
   <div class="navbar-center">
-    <%= link_to 'Step By Step', root_path, class: 'btn btn-ghost text-xl' %>
+    <a class="btn btn-ghost text-xl">Step By Step</a>
   </div>
   <div class="navbar-end">
+    <!-- 他の要素をここに追加する -->
   </div>
 </div>
