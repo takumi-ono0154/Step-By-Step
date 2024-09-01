@@ -7,13 +7,16 @@
     <p>設計されたアプリです。</p><br>
     <p>習慣を身につける過程で挫折しがちな人々に向けて</p>
     <p>無理のないスケジュールを提案し、</p>
-    <p>目標達成をサポートします。</p><br>
-    <p>まずは習慣目標を作成してみましょう!</p>
-    <p>(所要時間1分程度)</p>
+    <p>目標達成をサポートします。</p>
   </div>
   <div class="flex justify-center mt-8">
-    <%= link_to new_habit_path, class: "btn btn-active btn-secondary" do %>
-      START!
+    <%= link_to new_user_session_path, class: "btn btn-active btn-secondary" do %>
+      ログイン
+    <% end %>
+  </div>
+  <div class="flex justify-center mt-8">
+    <%= link_to "#", class: "btn btn-active btn-secondary" do %>
+      ゲストログイン
     <% end %>
   </div>
 </div>
