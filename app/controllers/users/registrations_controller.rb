@@ -50,6 +50,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])
   end
 
+  # 編集後のリダイレクト先を指定するメソッド
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
+
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
