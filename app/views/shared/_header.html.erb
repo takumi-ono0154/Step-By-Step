@@ -1,6 +1,9 @@
 <div class="navbar bg-base-300">
-  <div class="navbar-start">
-    <div class="dropdown">
+  <div class="navbar-center">
+    <a class="btn btn-ghost text-xl">Step By Step</a>
+  </div>
+  <div class="navbar-end">
+    <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,18 +24,12 @@
         <% if user_signed_in? %>
           <li><%= link_to 'マイページ', user_path(current_user), class: 'link' %></li>
           <li><%= link_to 'プロフィール編集', edit_user_registration_path, class: 'link' %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'link' %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: 'link' %></li>
         <% else %>
           <li><%= link_to 'ログイン', new_user_session_path, class: 'link' %></li>
           <li><%= link_to '新規登録', new_user_registration_path, class: 'link' %></li>
         <% end %>
       </ul>
     </div>
-  </div>
-  <div class="navbar-center">
-    <a class="btn btn-ghost text-xl">Step By Step</a>
-  </div>
-  <div class="navbar-end">
-    <!-- 他の要素をここに追加する -->
   </div>
 </div>
