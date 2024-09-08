@@ -33,7 +33,7 @@ class HabitsController < ApplicationController
         @habit.target_frequency,
         @habit.target_volume_hours.to_i * 60 + @habit.target_volume_minutes.to_i
       )
-      
+
       # WeeklyPlanテーブルに保存
       @weekly_plan.each do |plan|
         WeeklyPlan.create!(
@@ -43,9 +43,9 @@ class HabitsController < ApplicationController
           volume: plan[:volume]
         )
       end
-      
+
       # 週間目標を表示するためのビューにリダイレクト
-      redirect_to habits_path, notice: '習慣目標が保存されました。'
+      redirect_to habits_path, notice: "習慣目標が保存されました。"
     else
       render :new
     end
@@ -70,7 +70,7 @@ class HabitsController < ApplicationController
     @habit.destroy!
 
     respond_to do |format|
-      format.html { redirect_to habits_url, notice: '習慣が削除されました。' }
+      format.html { redirect_to habits_url, notice: "習慣が削除されました。" }
       format.json { head :no_content }
     end
   end
@@ -91,33 +91,33 @@ class HabitsController < ApplicationController
     today = Date.today
     total_days = (target_date - today).to_i
     total_weeks = (total_days / 7.0).ceil
-  
+
     # 各週の頻度を設定
     weekly_frequencies = Array.new(total_weeks) do |i|
       (target_frequency.to_f / total_weeks * (i + 1)).round
     end
-    weekly_frequencies.map! { |freq| [freq, 1].max }
-  
+    weekly_frequencies.map! { |freq| [ freq, 1 ].max }
+
     # 各週のボリュームを設定
     weekly_volumes = Array.new(total_weeks) do |i|
       (target_volume_minutes.to_f / total_weeks * (i + 1)).round
     end
     weekly_volumes = weekly_volumes.map { |volume| (volume / 10.0).ceil * 10 }
-  
+
     # 最終週のボリュームをユーザーの目標ボリュームに設定
     weekly_volumes[-1] = target_volume_minutes
-  
+
     # ボリュームの調整
     # ボリュームが0にならないように設定
     (total_weeks - 2).downto(0) do |i|
-      weekly_volumes[i] = [weekly_volumes[i + 1] - 10, 10].max
+      weekly_volumes[i] = [ weekly_volumes[i + 1] - 10, 10 ].max
     end
-  
+
     # 最終週の前の週のボリュームが最終週のボリュームに達しない場合の調整
     if total_weeks > 1 && weekly_volumes[-2] >= target_volume_minutes
-      weekly_volumes[-2] = [target_volume_minutes - 10, 10].max
+      weekly_volumes[-2] = [ target_volume_minutes - 10, 10 ].max
     end
-  
+
     # 各週ごとの計画を作成
     weekly_plan = total_weeks.times.map do |i|
       {
@@ -126,7 +126,7 @@ class HabitsController < ApplicationController
         volume: weekly_volumes[i] || weekly_volumes.last
       }
     end
-  
+
     weekly_plan
-  end  
+  end
 end
