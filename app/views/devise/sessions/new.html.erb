@@ -1,29 +1,31 @@
-<div class="p-4">
-  <h2 class="text-center mb-4 font-bold text-xl">ログイン</h2>
+<% content_for :title, "ログイン" %>
 
-  <div class="flex justify-center items-center min-h-screen">
+<div class="p-4 flex-grow">
+  <h2 class="text-center font-bold text-xl">ログイン</h2>
+
+  <div class="flex justify-center items-center">
     <div class="p-4">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "w-full max-w-md" }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "w-full" }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field mb-4 text-center mt-4">
           <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full input input-bordered" %>
         </div>
 
-        <div class="field mb-4 text-center mt-4">
+        <div class="field mb-4 text-center">
           <%= f.label :password, "パスワード" %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class: "w-full" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "w-full input input-bordered" %>
         </div>
 
         <% if devise_mapping.rememberable? %>
-          <div class="field mb-4 text-center mt-4">
+          <div class="field mb-4 text-center">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me, "ログインを記憶する" %>
           </div>
         <% end %>
 
-        <div class="actions text-center mt-4">
+        <div class="actions text-center">
           <%= f.submit "ログイン", class: "btn btn-primary" %>
         </div>
       <% end %>

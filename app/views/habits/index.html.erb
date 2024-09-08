@@ -1,15 +1,15 @@
 <% content_for :title, "習慣一覧" %>
 
-<div class="p-4">
-  <h2 class="text-center mb-4 font-bold text-xl">習慣一覧</h2>
+<div class="p-4 flex-grow">
+  <h2 class="text-center font-bold text-xl">習慣一覧</h2>
 
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center items-center">
     <div class="p-4 w-full max-w-4xl">
       <% if @habits.empty? %>
         <p class="text-center text-gray-500">習慣目標がありません</p>
       <% else %>
         <% @habits.each do |habit| %>
-          <div class="mb-6 p-4 border rounded-lg shadow-sm">
+          <div class="mb-6 p-4 border rounded-lg shadow-sm text-center">
             <h3 class="text-xl font-bold mb-2"><%= habit.name %></h3>
             <p class="mb-2">目標日: <%= habit.target_date %></p>
             <p class="mb-4">目標頻度: <%= habit.target_frequency %>回/週</p>
@@ -17,7 +17,7 @@
 
             <h4 class="text-lg font-semibold mb-2">週間プラン</h4>
             <div class="overflow-x-auto">
-              <table class="table table-zebra w-full">
+              <table class="table table-zebra w-full text-center">
                 <thead>
                   <tr>
                     <th>週</th>
@@ -43,7 +43,7 @@
           </div>
         <% end %>
       <% end %>
-      <div class="p-4">
+      <div class="p-4 flex justify-center items-center">
         <%= link_to '習慣目標を作成', new_habit_path, class: 'btn btn-secondary' %>
       </div>
     </div>

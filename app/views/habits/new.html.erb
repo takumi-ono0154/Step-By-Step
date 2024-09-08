@@ -1,9 +1,9 @@
-<% content_for :title, "目標設定" %>
+<% content_for :title, "習慣目標作成" %>
 
-<div class="p-4">
-  <h2 class="text-center mb-4 font-bold text-xl">目標設定</h2>
+<div class="p-4 flex-grow">
+  <h2 class="text-center font-bold text-xl">習慣目標作成</h2>
 
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center items-center">
     <div class="p-4">
       <%= form_with(model: @habit, local: true, html: { class: "w-full max-w-md" }) do |form| %>
         <% if @habit.errors.any? %>
