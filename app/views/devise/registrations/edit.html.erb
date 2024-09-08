@@ -1,59 +1,76 @@
-<div class="p-4">
-  <h2 class="text-center mb-4 font-bold text-xl">プロフィール編集</h2>
+<% content_for :title, "プロフィール編集" %>
 
-  <div class="flex justify-center items-center min-h-screen">
+<div class="p-4 flex-grow">
+  <h2 class="text-center font-bold text-xl">プロフィール編集</h2>
+
+  <div class="flex justify-center items-center">
     <div class="p-4 w-full max-w-md">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "w-full" }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <!-- ユーザーネーム変更フィールド -->
-        <div class="field mb-4 text-center mt-4">
-          <%= f.label :name, "ユーザーネーム" %><br />
-          <%= f.text_field :name, class: "w-full border p-2 rounded" %>
-        </div>
-
-        <div class="field mb-4 text-center mt-4">
-          <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full border p-2 rounded" %>
-        </div>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div class="text-center mb-4">
-            Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+        <div class="flex flex-col items-center space-y-6">
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">ユーザーネーム</span>
+              </label>
+              <%= f.text_field :name, class: "input input-bordered w-full", required: true %>
+            </div>
           </div>
-        <% end %>
 
-        <div class="field mb-4 text-center mt-4">
-          <%= f.label :password, "新しいパスワード" %>
-            <em>(<%= @minimum_password_length %>文字以上)</em><br />
-          <i>※変更しない場合は入力なし</i><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "w-full border p-2 rounded" %>
-        </div>
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">メールアドレス</span>
+              </label>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full", required: true %>
+            </div>
+          </div>
 
-        <div class="field mb-4 text-center mt-4">
-          <%= f.label :password_confirmation, "パスワード確認" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full border p-2 rounded" %>
-        </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="text-center mb-4">
+              Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+            </div>
+          <% end %>
 
-        <div class="field mb-4 text-center mt-4">
-          <%= f.label :current_password, "現在のパスワード" %><br />
-          <i>※変更確認には現在のパスワードが必要です</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full border p-2 rounded" %>
-        </div>
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">新しいパスワード <em>(<%= @minimum_password_length %>文字以上)</em></span>
+              </label>
+              <i>※変更しない場合は入力なし</i>
+              <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered w-full" %>
+            </div>
+          </div>
 
-        <div class="actions text-center mt-4">
-          <%= f.submit "更新", class: "btn btn-primary" %>
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">パスワード確認</span>
+              </label>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full" %>
+            </div>
+          </div>
+
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">現在のパスワード</span>
+              </label>
+              <i>※変更確認には現在のパスワードが必要です</i>
+              <%= f.password_field :current_password, autocomplete: "current-password", class: "input input-bordered w-full" %>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-8 mb-4 p-2">
+            <%= f.submit "更新", class: "btn btn-active btn-primary" %>
+          </div>
         </div>
       <% end %>
 
       <div class="text-center mt-4">
-        <%= button_to "⚠︎アカウント削除", registration_path(resource_name), data: { confirm: "アカウントを削除してもよろしいですか？", turbo_confirm: "アカウントを削除してもよろしいですか？" }, method: :delete, class: "btn btn-danger" %>
-      </div>
-
-      <div class="text-center mt-4">
-        <%= link_to "戻る", :back, class: "btn btn-secondary" %>
+        <%= button_to "⚠︎アカウント削除", registration_path(resource_name), data: { confirm: "アカウントを削除してもよろしいですか？", turbo_confirm: "アカウントを削除してもよろしいですか？" }, method: :delete, class: "btn btn-warning" %>
       </div>
     </div>
   </div>
 </div>
-

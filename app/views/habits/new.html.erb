@@ -1,2 +1,67 @@
-<% content_for :title, "目標入力" %>
-<%= render "form", habit: @habit %>
+<% content_for :title, "習慣目標作成" %>
+
+<div class="p-4 flex-grow">
+  <h2 class="text-center font-bold text-xl">習慣目標作成</h2>
+
+  <div class="flex justify-center items-center">
+    <div class="p-4">
+      <%= form_with(model: @habit, local: true, html: { class: "w-full max-w-md" }) do |form| %>
+        <% if @habit.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@habit.errors.count, "error") %> prohibited this habit from being saved:</h2>
+            <ul>
+              <% @habit.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="flex flex-col items-center space-y-6">
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">習慣化したいことは？</span>
+              </label><br>
+              <%= form.text_field :name, placeholder: "例: 筋トレ", class: "input input-bordered w-full", required: true %>
+            </div>
+          </div>
+
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">週に何回行う？</span>
+              </label><br>
+              <%= form.select :target_frequency, options_for_select((1..7).map { |n| ["週#{n}回", n] }), {prompt: '週〜回'}, class: "select select-bordered w-full", required: true %>
+            </div>
+          </div>
+
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">いつまでに？</span>
+              </label><br>
+              <%= form.date_field :target_date, class: "input input-bordered w-full", required: true %>
+            </div>
+          </div>
+
+          <div class="w-full max-w-xs p-2">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">どのくらいの時間行う？</span>
+              </label>
+              <div class="flex space-x-2">
+                <%= form.select :target_volume_hours, options_for_select((0..23).map { |hour| ["#{hour} 時間", hour] }), {prompt: '時間'}, class: "select select-bordered w-1/2", required: true %>
+                <%= form.select :target_volume_minutes, options_for_select([0, 10, 20, 30, 40, 50].map { |minute| ["#{minute} 分", minute] }), {prompt: '分'}, class: "select select-bordered w-1/2", required: true %>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-8 mb-4 p-2">
+            <%= form.submit '週間目標を表示', class: 'btn btn-active btn-secondary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

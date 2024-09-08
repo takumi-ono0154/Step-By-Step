@@ -1,16 +1,51 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "習慣一覧" %>
 
-<% content_for :title, "Habits" %>
+<div class="p-4 flex-grow">
+  <h2 class="text-center font-bold text-xl">習慣一覧</h2>
 
-<h1>Habits</h1>
+  <div class="flex justify-center items-center">
+    <div class="p-4 w-full max-w-4xl">
+      <% if @habits.empty? %>
+        <p class="text-center text-gray-500">習慣目標がありません</p>
+      <% else %>
+        <% @habits.each do |habit| %>
+          <div class="mb-6 p-4 border rounded-lg shadow-sm text-center">
+            <h3 class="text-xl font-bold mb-2"><%= habit.name %></h3>
+            <p class="mb-2">目標日: <%= habit.target_date %></p>
+            <p class="mb-4">目標頻度: <%= habit.target_frequency %>回/週</p>
+            <p class="mb-4">目標時間: <%= habit.target_volume_hours %>時間 <%= habit.target_volume_minutes %>分</p><br>
 
-<div id="habits">
-  <% @habits.each do |habit| %>
-    <%= render habit %>
-    <p>
-      <%= link_to "Show this habit", habit %>
-    </p>
-  <% end %>
+            <h4 class="text-lg font-semibold mb-2">週間プラン</h4>
+            <div class="overflow-x-auto">
+              <table class="table table-zebra w-full text-center">
+                <thead>
+                  <tr>
+                    <th>週</th>
+                    <th>頻度（回/週）</th>
+                    <th>時間（分/回）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% habit.weekly_plans.each do |plan| %>
+                    <tr>
+                      <td>第<%= plan.week %>週</td>
+                      <td><%= plan.frequency %>回</td>
+                      <td><%= plan.volume %>分</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mt-4">
+              <%= button_to '削除', habit_path(habit), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="p-4 flex justify-center items-center">
+        <%= link_to '習慣目標を作成', new_habit_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New habit", new_habit_path %>
