@@ -5,37 +5,44 @@
 
   <div class="flex justify-center items-center min-h-screen">
     <div class="p-4 w-full max-w-4xl">
-      <% @habits.each do |habit| %>
-        <div class="mb-6 p-4 border rounded-lg shadow-sm">
-          <h3 class="text-xl font-bold mb-2"><%= habit.name %></h3>
-          <p class="mb-2">目標日: <%= habit.target_date %></p>
-          <p class="mb-4">頻度: <%= habit.target_frequency %>回/週</p>
+      <% if @habits.empty? %>
+        <p class="text-center text-gray-500">習慣目標がありません</p>
+      <% else %>
+        <% @habits.each do |habit| %>
+          <div class="mb-6 p-4 border rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold mb-2"><%= habit.name %></h3>
+            <p class="mb-2">目標日: <%= habit.target_date %></p>
+            <p class="mb-4">頻度: <%= habit.target_frequency %>回/週</p>
 
-          <h4 class="text-lg font-semibold mb-2">週間プラン</h4>
-          <table class="table-auto w-full border border-gray-200">
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="border px-4 py-2">週</th>
-                <th class="border px-4 py-2">頻度（回/週）</th>
-                <th class="border px-4 py-2">ボリューム（分/週）</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% habit.weekly_plans.each do |plan| %>
-                <tr>
-                  <td class="border px-4 py-2">第<%= plan.week %>週</td>
-                  <td class="border px-4 py-2"><%= plan.frequency %></td>
-                  <td class="border px-4 py-2"><%= plan.volume.present? ? "#{plan.volume}分" : '未設定' %></td> <!-- volumeがnilなら未設定と表示 -->
+            <h4 class="text-lg font-semibold mb-2">週間プラン</h4>
+            <table class="table-auto w-full border border-gray-200">
+              <thead>
+                <tr class="bg-gray-100">
+                  <th class="border px-4 py-2">週</th>
+                  <th class="border px-4 py-2">頻度（回/週）</th>
+                  <th class="border px-4 py-2">ボリューム（分/週）</th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <% habit.weekly_plans.each do |plan| %>
+                  <tr>
+                    <td class="border px-4 py-2">第<%= plan.week %>週</td>
+                    <td class="border px-4 py-2"><%= plan.frequency %></td>
+                    <td class="border px-4 py-2"><%= plan.volume.present? ? "#{plan.volume}分" : '未設定' %></td> <!-- volumeがnilなら未設定と表示 -->
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
 
-          <div class="mt-4">
-            <%= button_to '削除', habit_path(habit), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            <div class="mt-4">
+              <%= button_to '削除', habit_path(habit), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
+      <div class="p-4">
+        <%= link_to '習慣目標を作成', new_habit_path, class: 'btn btn-secondary' %>
+      </div>
     </div>
   </div>
 </div>

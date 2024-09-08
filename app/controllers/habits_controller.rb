@@ -88,29 +88,37 @@ class HabitsController < ApplicationController
   end
 
   def calculate_habit_plan(target_date, target_frequency, target_volume_minutes)
-    target_volume_minutes ||= 0 # volumeがnilの場合に0をデフォルトとする
-  
     today = Date.today
     total_days = (target_date - today).to_i
     total_weeks = (total_days / 7.0).ceil
   
+    # 各週の頻度を設定
     weekly_frequencies = Array.new(total_weeks) do |i|
       (target_frequency.to_f / total_weeks * (i + 1)).round
     end
+    weekly_frequencies.map! { |freq| [freq, 1].max }
   
+    # 各週のボリュームを設定
     weekly_volumes = Array.new(total_weeks) do |i|
       (target_volume_minutes.to_f / total_weeks * (i + 1)).round
     end
+    weekly_volumes = weekly_volumes.map { |volume| (volume / 10.0).ceil * 10 }
   
-    weekly_volumes = weekly_volumes.map { |volume| (volume / 15.0).ceil * 15 }
+    # 最終週のボリュームをユーザーの目標ボリュームに設定
+    weekly_volumes[-1] = target_volume_minutes
   
-    total_allocated_volume = weekly_volumes.sum
-    if total_allocated_volume > target_volume_minutes
-      weekly_volumes[-1] -= (total_allocated_volume - target_volume_minutes)
-    elsif total_allocated_volume < target_volume_minutes
-      weekly_volumes[-1] += (target_volume_minutes - total_allocated_volume)
+    # ボリュームの調整
+    # ボリュームが0にならないように設定
+    (total_weeks - 2).downto(0) do |i|
+      weekly_volumes[i] = [weekly_volumes[i + 1] - 10, 10].max
     end
   
+    # 最終週の前の週のボリュームが最終週のボリュームに達しない場合の調整
+    if total_weeks > 1 && weekly_volumes[-2] >= target_volume_minutes
+      weekly_volumes[-2] = [target_volume_minutes - 10, 10].max
+    end
+  
+    # 各週ごとの計画を作成
     weekly_plan = total_weeks.times.map do |i|
       {
         week: i + 1,
@@ -120,6 +128,5 @@ class HabitsController < ApplicationController
     end
   
     weekly_plan
-  end
-  
+  end  
 end

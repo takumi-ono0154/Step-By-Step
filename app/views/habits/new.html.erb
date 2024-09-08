@@ -52,7 +52,7 @@
               </label>
               <div class="flex space-x-2">
                 <%= form.select :target_volume_hours, options_for_select((0..23).map { |hour| ["#{hour} 時間", hour] }), {prompt: '時間'}, class: "select select-bordered w-1/2", required: true %>
-                <%= form.select :target_volume_minutes, options_for_select([0, 15, 30, 45].map { |minute| ["#{minute} 分", minute] }), {prompt: '分'}, class: "select select-bordered w-1/2", required: true %>
+                <%= form.select :target_volume_minutes, options_for_select([0, 10, 20, 30, 40, 50].map { |minute| ["#{minute} 分", minute] }), {prompt: '分'}, class: "select select-bordered w-1/2", required: true %>
               </div>
             </div>
           </div>
