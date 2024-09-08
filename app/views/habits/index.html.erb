@@ -12,27 +12,30 @@
           <div class="mb-6 p-4 border rounded-lg shadow-sm">
             <h3 class="text-xl font-bold mb-2"><%= habit.name %></h3>
             <p class="mb-2">目標日: <%= habit.target_date %></p>
-            <p class="mb-4">頻度: <%= habit.target_frequency %>回/週</p>
+            <p class="mb-4">目標頻度: <%= habit.target_frequency %>回/週</p>
+            <p class="mb-4">目標時間: <%= habit.target_volume_hours %>時間 <%= habit.target_volume_minutes %>分</p><br>
 
             <h4 class="text-lg font-semibold mb-2">週間プラン</h4>
-            <table class="table-auto w-full border border-gray-200">
-              <thead>
-                <tr class="bg-gray-100">
-                  <th class="border px-4 py-2">週</th>
-                  <th class="border px-4 py-2">頻度（回/週）</th>
-                  <th class="border px-4 py-2">ボリューム（分/週）</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% habit.weekly_plans.each do |plan| %>
+            <div class="overflow-x-auto">
+              <table class="table table-zebra w-full">
+                <thead>
                   <tr>
-                    <td class="border px-4 py-2">第<%= plan.week %>週</td>
-                    <td class="border px-4 py-2"><%= plan.frequency %></td>
-                    <td class="border px-4 py-2"><%= plan.volume.present? ? "#{plan.volume}分" : '未設定' %></td> <!-- volumeがnilなら未設定と表示 -->
+                    <th>週</th>
+                    <th>頻度（回/週）</th>
+                    <th>時間（分/回）</th>
                   </tr>
-                <% end %>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <% habit.weekly_plans.each do |plan| %>
+                    <tr>
+                      <td>第<%= plan.week %>週</td>
+                      <td><%= plan.frequency %>回</td>
+                      <td><%= plan.volume %>分</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
 
             <div class="mt-4">
               <%= button_to '削除', habit_path(habit), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
