@@ -1,3 +1,19 @@
-<div class="p-4 flex-grow">
+<div class="p-4 flex flex-col items-center">
   <h2 class="text-center mb-4 font-bold text-xl">マイページ</h2>
+
+  <% if @current_weekly_plans.present? %>
+    <% @current_weekly_plans.each_with_index do |plan, index| %>
+      <div class="mb-4 text-center w-full max-w-md mx-auto <%= index.even? ? 'bg-gray-100' : 'bg-white' %> p-4 rounded-md shadow-md">
+        <h3 class="text-xl font-bold mb-2"><%= plan.habit.name %></h3>
+        <p>目標日: <%= plan.habit.target_date %></p>
+        <p>目標頻度: <%= plan.habit.target_frequency %>回/週</p>
+        <p>目標時間: <%= plan.habit.target_volume_hours %>時間 <%= plan.habit.target_volume_minutes %>分</p>
+        <h3 class="text-lg font-semibold mt-4">今週の目標</h3>
+        <p>目標頻度: 週<%= plan.frequency %> 回</p>
+        <p>目標時間: <%= plan.volume %>分</p>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-center text-gray-600">習慣目標がありません</p>
+  <% end %>
 </div>
