@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # ログイン中のユーザーが自分のhabitだけを表示するように修正
+    if @user != current_user
+        redirect_to root_path
+        return
+    end
+
     @habits = @user.habits.includes(:weekly_plans)
     @current_weekly_plans = @habits.map do |habit|
       current_week = calculate_current_week(habit)

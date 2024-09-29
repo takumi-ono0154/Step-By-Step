@@ -4,7 +4,7 @@ class HabitsController < ApplicationController
 
   # GET /habits or /habits.json
   def index
-    @habits = Habit.all
+    @habits = current_user.habits.includes(:weekly_plans)
     @habit = Habit.new  # @habitを新しく定義してエラーを防ぐ
     @weekly_plan = params[:weekly_plan] || []
   end
