@@ -324,6 +324,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   letter_opener_web (~> 3.0)
+  msgpack (~> 1.7, >= 1.7.2)
   net-pop (~> 0.1.2)
   pg (~> 1.5)
   puma (>= 5.0)
