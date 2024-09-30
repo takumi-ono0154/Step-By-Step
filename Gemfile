@@ -39,6 +39,7 @@ gem "bootsnap", require: false
 gem "net-pop", "~> 0.1.2"
 gem "devise"
 gem "msgpack", "~> 1.7", ">= 1.7.2"
+gem "line-bot-api"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
