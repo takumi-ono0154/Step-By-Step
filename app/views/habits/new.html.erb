@@ -41,7 +41,7 @@
               <label class="label">
                 <span class="label-text">いつまでに？</span>
               </label><br>
-              <%= form.date_field :target_date, class: "input input-bordered w-full", required: true %>
+              <%= form.date_field :target_date, class: "input input-bordered w-full", required: true, min: (Date.today + 1).to_s %>
             </div>
           </div>
 
