@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   resources :habits, only: [ :index, :new, :create, :destroy ]
 
+  post "line/webhook", to: "line#webhook"
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
