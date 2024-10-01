@@ -11,9 +11,10 @@
         <% @habits.each do |habit| %>
           <div class="mb-6 p-4 border rounded-lg shadow-sm text-center">
             <h3 class="text-xl font-bold mb-2"><%= habit.name %></h3>
-            <p class="mb-2">目標日: <%= habit.target_date %></p>
-            <p class="mb-4">目標頻度: <%= habit.target_frequency %>回/週</p>
-            <p class="mb-4">目標時間: <%= habit.target_volume_hours %>時間 <%= habit.target_volume_minutes %>分</p><br>
+            <p>開始日: <%= habit.created_at.strftime("%Y年%m月%d日") %></p>
+            <p>目標日: <%= habit.target_date.strftime("%Y年%m月%d日") %></p>
+            <p>目標頻度: <%= habit.target_frequency %>回/週</p>
+            <p>目標時間: <%= habit.target_volume_hours %>時間 <%= habit.target_volume_minutes %>分</p><br>
 
             <h4 class="text-lg font-semibold mb-2">週間プラン</h4>
             <div class="overflow-x-auto">

@@ -16,4 +16,11 @@
   <% else %>
     <p class="text-center text-gray-600">習慣目標がありません</p>
   <% end %>
+  <div class="p-4 flex justify-center items-center">
+    <%= link_to '習慣目標を作成', new_habit_path, class: 'btn btn-secondary' %>
+  </div>
+  <p class="text-center mt-4 mb-2 font-semibold">友だち登録をして、習慣を忘れずに続けましょう！</p>
+  <%= link_to "https://lin.ee/fX8dcMX", target: "_blank" do %>
+    <%= image_tag "https://scdn.line-apps.com/n/line_add_friends/btn/ja.png", alt: "友だち追加", size: "140x140", border: "0" %>
+  <% end %>
 </div>
