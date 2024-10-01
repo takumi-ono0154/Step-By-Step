@@ -101,14 +101,14 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              "smtp.gmail.com",
     port:                 587,
-    domain:               'portfolio-twnh.onrender.com',
-    user_name:           ENV['GMAIL_USERNAME'],
-    password:            ENV['GMAIL_PASSWORD'],
-    authentication:       'plain',
+    domain:               "portfolio-twnh.onrender.com",
+    user_name:           ENV["GMAIL_USERNAME"],
+    password:            ENV["GMAIL_PASSWORD"],
+    authentication:       "plain",
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { host: 'portfolio-twnh.onrender.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: "portfolio-twnh.onrender.com", protocol: "https" }
 end
