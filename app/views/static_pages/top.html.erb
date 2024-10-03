@@ -4,8 +4,8 @@
   </div>
   <div class="mt-4 text-base text-center">
     <p>「Step By Step」は習慣化をサポートするために</p>
-    <p>設計されたアプリです。</p><br>
-    <p>習慣を身につける過程で挫折しがちな人々に向けて</p>
+    <p>作成されたアプリです。</p><br>
+    <p>習慣を身につける過程で挫折しがちな方に向けて</p>
     <p>無理のないスケジュールを提案し、</p>
     <p>目標達成をサポートします。</p>
   </div>
@@ -18,5 +18,37 @@
     <%= link_to guest_sign_in_path, class: "btn btn-active btn-secondary" do %>
       ゲストログイン
     <% end %>
+  </div>
+  <div class="flex space-x-4 overflow-x-auto w-[90vw] mx-auto text-center mt-8">
+    <div class="bg-white shadow-md rounded-lg p-4 w-5/6 max-w-md flex-shrink-0">
+      <div class="flex justify-center">
+        <%= image_tag 'create_habit.png', width: 250, height: 100 %>
+      </div>
+      <div class="font-bold my-4">習慣目標を作成しよう</div>
+      <div class="text-sm">
+        ・習慣化したい「行動」「頻度」「期間」「ボリューム」を入力<br>
+        ・習慣は複数作成できます
+      </div>
+    </div>
+    <div class="bg-white shadow-md rounded-lg p-4 w-5/6 max-w-md flex-shrink-0">
+      <div class="flex justify-center">
+        <%= image_tag 'habits.png', width: 250, height: 100 %>
+      </div>
+      <div class="font-bold my-4">習慣一覧ページで目標のSTEPを確認しよう</div>
+      <div class="text-sm">
+        ・週ごとの頻度、時間を確認<br>
+        ・一度作成された習慣は編集ができません<br>
+      </div>
+    </div>
+    <div class="bg-white shadow-md rounded-lg p-4 w-5/6 max-w-md flex-shrink-0">
+      <div class="flex justify-center">
+        <%= image_tag 'mypage.png', width: 250, height: 100 %>
+      </div>
+      <div class="font-bold my-4">マイページで今週の目標を確認しよう</div>
+      <div class="text-sm">
+        ・その週に行う目標が表示されます<br>
+        ・LINE友達追加を行うと月曜午前8時に目標を確認するようリマインドしてくれます
+      </div>
+    </div>
   </div>
 </div>
