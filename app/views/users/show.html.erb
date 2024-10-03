@@ -10,7 +10,8 @@
         <p>目標時間: <%= plan.habit.target_volume_hours %>時間 <%= plan.habit.target_volume_minutes %>分</p>
         <h3 class="text-lg font-semibold mt-4">今週の目標</h3>
         <p>目標頻度: 週<%= plan.frequency %> 回</p>
-        <p>目標時間: <%= plan.volume %>分</p>
+        <p>目標時間: <%= plan.volume %>分</p><br>
+        <%= button_to '達成', habit_completions_path(plan.habit), method: :post, class: "btn btn-primary" %>
       </div>
     <% end %>
   <% else %>

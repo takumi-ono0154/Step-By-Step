@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # ログイン中のユーザーが自分のhabitだけを表示するように修正
+    # ログイン中のユーザーが自分のhabitだけを表示
     if @user != current_user
         redirect_to root_path
         return
