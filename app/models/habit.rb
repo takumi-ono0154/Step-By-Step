@@ -1,6 +1,7 @@
 class Habit < ApplicationRecord
   belongs_to :user
   has_many :weekly_plans, dependent: :destroy
+  has_many :completions, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :target_date, presence: true
