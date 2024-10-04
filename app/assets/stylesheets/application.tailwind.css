@@ -56,10 +56,10 @@
 }
 
 .simple-calendar {
-  .prev-month a {
-    display: none;
+  .prev-month {
+    color: rgba(0, 0, 0, 0.2); 
   }
-  .next-month a {
-    display: none;
+  .next-month {
+    color: rgba(0, 0, 0, 0.2);
   }
 }
