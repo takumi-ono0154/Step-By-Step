@@ -16,8 +16,8 @@
             <p>目標頻度: <%= habit.target_frequency %>回/週</p>
             <p>目標時間: <%= habit.target_volume_hours %>時間 <%= habit.target_volume_minutes %>分</p><br>
 
-            <h4 class="text-lg font-semibold mb-2">週間プラン</h4>
-            <div class="overflow-x-auto">
+            <h4 class="text-lg font-semibold mt-2">週間プラン</h4>
+            <div class="overflow-x-auto mb-6">
               <table class="table table-zebra w-full text-center">
                 <thead>
                   <tr>
@@ -36,6 +36,17 @@
                   <% end %>
                 </tbody>
               </table>
+            </div>
+
+            <h4 class="text-lg font-semibold p-4">目標達成日</h4>
+            <div>
+              <%= month_calendar do |date| %>
+                <% completion = habit.completions.find_by(completed_at: date) %>
+                <div class="p-2
+                  <%= 'bg-green-500' if completion.present? %>">
+                  <%= date.day %>
+                </div>
+              <% end %>
             </div>
 
             <div class="mt-4">

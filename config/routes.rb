@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   get "users/:id", to: "users#show", as: "user"
 
-  resources :habits, only: [ :index, :new, :create, :destroy ]
+  resources :habits, only: [ :index, :new, :create, :destroy ] do
+    resources :completions, only: [ :create ]
+  end
 
   post "line/webhook", to: "line#webhook"
 
