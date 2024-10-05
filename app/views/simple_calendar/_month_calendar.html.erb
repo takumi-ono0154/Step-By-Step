@@ -1,17 +1,13 @@
 <div class="simple-calendar">
   <div class="calendar-heading flex justify-center items-center">
-    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title">
-       <%= start_date.year %> <%= t('date.month_names')[start_date.month] %>
-    </time>
-
     <nav>
       <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view, class: 'btn' %>
-      <%= link_to t('simple_calendar.today', default: '当月'), calendar.url_for_today_view, class: 'btn' %>
+      <span class="calendar-title"><%= start_date.year %> <%= t('date.month_names')[start_date.month] %></span>
       <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view, class: 'btn' %>
     </nav>
   </div>
 
-  <table class="table table-striped">
+  <table class="table table-striped text-center">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>

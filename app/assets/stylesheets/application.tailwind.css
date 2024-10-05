@@ -55,6 +55,92 @@
   }
 }
 
+/* タブレット (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  body {
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  header, main, footer {
+    padding: 2rem;
+  }
+
+  .text-xl {
+    font-size: 1.5rem;
+  }
+
+  .text-base {
+    font-size: 1.125rem;
+  }
+
+  .text-sm {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* デスクトップ (1025px - 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  body {
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  header, main, footer {
+    padding: 3rem;
+  }
+
+  .text-xl {
+    font-size: 1.75rem;
+  }
+
+  .text-base {
+    font-size: 1.25rem;
+  }
+
+  .text-sm {
+    font-size: 1.125rem;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (min-width: 1281px) {
+  body {
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  header, main, footer {
+    padding: 4rem;
+  }
+
+  .text-xl {
+    font-size: 2rem;
+  }
+
+  .text-base {
+    font-size: 1.5rem;
+  }
+
+  .text-sm {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    padding: 1.25rem 2.5rem;
+  }
+}
+
 .simple-calendar {
   .prev-month {
     color: rgba(0, 0, 0, 0.2); 
