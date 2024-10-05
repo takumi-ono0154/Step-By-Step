@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
+  config.hosts << "step-by-step-app.com"
   #   "example.com",     # Allow requests from example.com
   #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
   # ]
@@ -103,12 +103,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    domain:               "portfolio-twnh.onrender.com",
+    domain:               "step-by-step-app.com",
     user_name:           ENV["GMAIL_USERNAME"],
     password:            ENV["GMAIL_PASSWORD"],
     authentication:       "plain",
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { host: "portfolio-twnh.onrender.com", protocol: "https" }
+  config.action_mailer.default_url_options = { host: "step-by-step-app.com", protocol: "https" }
 end
