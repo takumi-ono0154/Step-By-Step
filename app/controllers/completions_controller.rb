@@ -4,9 +4,9 @@ class CompletionsController < ApplicationController
     @completion = @habit.completions.build(user: current_user, completed_at: Date.today)
 
     if @completion.save
-      redirect_to habits_path, notice: '習慣を達成しました！'
+      redirect_to habits_path, notice: "習慣を達成しました！"
     else
-      redirect_to habits_path, alert: 'エラーが発生しました。'
+      redirect_to habits_path, alert: "エラーが発生しました。"
     end
   end
 end
