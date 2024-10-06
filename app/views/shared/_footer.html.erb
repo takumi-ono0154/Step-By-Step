@@ -1,8 +1,8 @@
 <footer class="footer footer-center bg-base-300 text-base-content rounded p-3">
   <nav class="grid grid-flow-col gap-5">
-    <%= link_to '利用規約', '#', class: 'link link-hover' %>
-    <%= link_to 'プライバシーポリシー', '#', class: 'link link-hover' %>
-    <%= link_to 'お問い合わせ', '#', class: 'link link-hover' %>
+    <%= link_to '利用規約', terms_path, class: 'link link-hover' %>
+    <%= link_to 'プライバシーポリシー', privacy_path, class: 'link link-hover' %>
+    <%= link_to 'お問い合わせ', 'https://forms.gle/WJVZG9M6eMGMVKfZ9', class: 'link link-hover', target: '_blank', rel: 'noopener noreferrer' %>
   </nav>
   <aside>
     <p>Copyright © <%= Time.now.year %> - Step By Step - All rights reserved.</p>
