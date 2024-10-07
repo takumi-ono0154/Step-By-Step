@@ -28,22 +28,22 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'Step By Step',
-      title: '習慣化が苦手な人をサポートするアプリ',
+      site: "Step By Step",
+      title: "習慣化が苦手な人をサポートするアプリ",
       reverse: true,
-      charset: 'utf-8',
-      description: '習慣を身につける過程で挫折しがちな方に向けて、無理のないスケジュールを提案し目標達成をサポートします。',
-      keywords: '習慣',
+      charset: "utf-8",
+      description: "習慣を身につける過程で挫折しがちな方に向けて、無理のないスケジュールを提案し目標達成をサポートします。",
+      keywords: "習慣",
       canonical: request.original_url,
-      separator: '|',
+      separator: "|",
       og: {
         site_name: :site,
         title: :title,
         description: :description,
-        type: 'website',
+        type: "website",
         url: request.original_url,
-        image: image_url('ogp.png'),
-        local: 'ja-JP'
+        image: image_url("ogp.png"),
+        local: "ja-JP"
       }
     }
   end
