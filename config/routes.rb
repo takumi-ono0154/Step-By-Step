@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root "static_pages#top"
+  get "terms", to: "static_pages#terms"
+  get "privacy", to: "static_pages#privacy"
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
-    sessions: "users/sessions"
+    sessions: "users/sessions",
+    omniauth_callbacks: "omniauth_callbacks"
   }
 
   devise_scope :user do

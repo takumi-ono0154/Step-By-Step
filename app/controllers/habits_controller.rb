@@ -45,7 +45,7 @@ class HabitsController < ApplicationController
       end
 
       # 週間目標を表示するためのビューにリダイレクト
-      redirect_to habits_path, notice: "習慣目標が保存されました。"
+      redirect_to habits_path, notice: "習慣目標が保存されました"
     else
       render :new
     end
