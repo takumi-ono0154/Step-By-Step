@@ -27,6 +27,8 @@ services:
       - node_modules:/portfolio/node_modules
     environment:
       TZ: Asia/Tokyo
+      LINE_KEY: ${LINE_KEY}
+      LINE_SECRET: ${LINE_SECRET}
     ports:
       - "3000:3000"
     depends_on:
