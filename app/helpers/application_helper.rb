@@ -25,4 +25,26 @@ module ApplicationHelper
       flash_background_color(type) # その他はデフォルトの色を使用
     end
   end
+
+  def default_meta_tags
+    {
+      site: 'Step By Step',
+      title: '習慣化が苦手な人をサポートするアプリ',
+      reverse: true,
+      charset: 'utf-8',
+      description: '習慣を身につける過程で挫折しがちな方に向けて、無理のないスケジュールを提案し目標達成をサポートします。',
+      keywords: '習慣',
+      canonical: request.original_url,
+      separator: '|',
+      og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
+        type: 'website',
+        url: request.original_url,
+        image: image_url('ogp.png'),
+        local: 'ja-JP'
+      }
+    }
+  end
 end
