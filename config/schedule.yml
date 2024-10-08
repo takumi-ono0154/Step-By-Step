@@ -1,3 +1,3 @@
 reminder_notification_job:
-  cron: "* 23 * * *"
+  cron: "0 14 * * *"
   class: "ReminderNotificationJob"
