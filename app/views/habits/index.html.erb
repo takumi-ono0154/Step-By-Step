@@ -21,7 +21,7 @@
               <table class="table table-zebra w-full text-center">
                 <thead>
                   <tr>
-                    <th>週</th>
+                    <th>開始日</th>
                     <th>頻度（回/週）</th>
                     <th>時間（分/回）</th>
                   </tr>
@@ -29,7 +29,7 @@
                 <tbody>
                   <% habit.weekly_plans.each do |plan| %>
                     <tr>
-                      <td>第<%= plan.week %>週</td>
+                      <td class="whitespace-nowrap"><%= plan.start_date.strftime("%m月%d日") %></td>
                       <td><%= plan.frequency %>回</td>
                       <td><%= plan.volume %>分</td>
                     </tr>
