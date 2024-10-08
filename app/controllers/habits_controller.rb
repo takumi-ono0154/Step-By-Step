@@ -40,7 +40,8 @@ class HabitsController < ApplicationController
           habit: @habit,
           week: plan[:week],
           frequency: plan[:frequency],
-          volume: plan[:volume]
+          volume: plan[:volume],
+          start_date: plan[:start_date]
         )
       end
 
@@ -107,7 +108,6 @@ class HabitsController < ApplicationController
     # 最終週のボリュームをユーザーの目標ボリュームに設定
     weekly_volumes[-1] = target_volume_minutes
 
-    # ボリュームの調整
     # ボリュームが0にならないように設定
     (total_weeks - 2).downto(0) do |i|
       weekly_volumes[i] = [ weekly_volumes[i + 1] - 10, 10 ].max
@@ -120,10 +120,12 @@ class HabitsController < ApplicationController
 
     # 各週ごとの計画を作成
     weekly_plan = total_weeks.times.map do |i|
+      start_date = today + (i * 7)
       {
         week: i + 1,
         frequency: weekly_frequencies[i] || weekly_frequencies.last,
-        volume: weekly_volumes[i] || weekly_volumes.last
+        volume: weekly_volumes[i] || weekly_volumes.last,
+        start_date: start_date
       }
     end
 

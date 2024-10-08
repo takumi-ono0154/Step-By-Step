@@ -112,4 +112,6 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = { host: "step-by-step-app.com", protocol: "https" }
+  config.active_job.queue_adapter = :sidekiq
+  config.cache_store = :redis_cache_store, { url: ENV["REDIS_URL"] }
 end
