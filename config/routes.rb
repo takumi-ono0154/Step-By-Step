@@ -19,8 +19,6 @@ Rails.application.routes.draw do
     resources :completions, only: [ :create ]
   end
 
-  post "line/webhook", to: "line#webhook"
-
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   require "sidekiq/web"
