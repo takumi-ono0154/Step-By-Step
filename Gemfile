@@ -47,6 +47,7 @@ gem "omniauth-rails_csrf_protection"
 gem "dotenv-rails"
 gem "meta-tags"
 gem "sidekiq"
+gem "sidekiq-cron"
 
 
 group :development, :test do
