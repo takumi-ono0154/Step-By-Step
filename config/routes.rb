@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   post "line/webhook", to: "line#webhook"
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
 end
