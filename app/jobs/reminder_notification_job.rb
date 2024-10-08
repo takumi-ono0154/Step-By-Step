@@ -18,8 +18,9 @@ class ReminderNotificationJob < ApplicationJob
 
   def generate_reminder_message(user, habit, today_plan)
     "おはようございます、#{user.name}さん。\n" +
-    "習慣「#{habit.name}」が更新されました！\n" +
+    "「#{habit.name}」の習慣目標が更新されました！\n" +
     "頻度: #{today_plan.frequency}回/週\n" +
-    "時間: #{today_plan.volume}分"
+    "時間: #{today_plan.volume}分\n" +
+    "今週も頑張りましょう！"
   end
 end
