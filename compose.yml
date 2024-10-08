@@ -29,6 +29,7 @@ services:
       TZ: Asia/Tokyo
       LINE_KEY: ${LINE_KEY}
       LINE_SECRET: ${LINE_SECRET}
+      REDIS_URL: ${REDIS_URL}
     ports:
       - "3000:3000"
     depends_on:
