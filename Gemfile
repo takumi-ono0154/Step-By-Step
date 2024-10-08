@@ -48,7 +48,7 @@ gem "dotenv-rails"
 gem "meta-tags"
 gem "sidekiq"
 gem "sidekiq-cron"
-
+gem "redis"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
