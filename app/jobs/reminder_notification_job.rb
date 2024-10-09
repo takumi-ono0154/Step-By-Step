@@ -4,9 +4,9 @@ class ReminderNotificationJob < ApplicationJob
   def perform
     User.find_each do |user|
       today = Date.today
-            user.habits.each do |habit|
+      user.habits.each do |habit|
         today_plan = habit.weekly_plans.find_by(start_date: today)
-        if today_plan
+        if today_plan && today_plan.week != 1
           reminder_message = generate_reminder_message(user, habit, today_plan)
           LineNotifyService.send_message(user.uid, reminder_message) if user.uid.present?
         end
