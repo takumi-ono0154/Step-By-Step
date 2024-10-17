@@ -12,7 +12,6 @@ class Habit < ApplicationRecord
     ((Date.today - created_at.to_date).to_i / 7).to_i + 1
   end
 
-  # 現在の週次プランを取得
   def current_weekly_plan
     current_week_number = current_week
     weekly_plans.find_by(week: current_week_number)
