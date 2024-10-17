@@ -30,6 +30,7 @@ group :development, :test do
   gem "brakeman", "~> 6.2.1", require: false
   gem "rubocop-rails-omakase", require: false
   gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
