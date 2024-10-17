@@ -7,7 +7,7 @@ RSpec.describe "Habits", type: :request do
     post user_session_path, params: {
       user: {
         email: user.email,
-        password: 'password123' 
+        password: 'password123'
       }
     }
   end
