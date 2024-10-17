@@ -9,18 +9,9 @@ class HabitsController < ApplicationController
     @weekly_plan = params[:weekly_plan] || []
   end
 
-  # GET /habits/1 or /habits/1.json
-  def show
-    @habit = Habit.find(params[:id])
-  end
-
   # GET /habits/new
   def new
     @habit = Habit.new
-  end
-
-  # GET /habits/1/edit
-  def edit
   end
 
   # POST /habits or /habits.json
