@@ -8,7 +8,6 @@ class LineController < ApplicationController
     events.each do |event|
       if event["type"] == "follow"
         line_user_id = event["source"]["userId"]
-        # userテーブルにline_user_idを保存
         User.find_or_create_by(line_user_id: line_user_id)
       end
     end

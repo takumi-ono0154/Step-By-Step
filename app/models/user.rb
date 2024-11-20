@@ -41,12 +41,10 @@ class User < ApplicationRecord
 
   private
 
-  # ランダムなメールアドレスを生成するメソッド
   def self.generate_random_email
     "guest_#{SecureRandom.hex(5)}@example.com"
   end
 
-  # ランダムなユーザーネームを生成するメソッド
   def self.generate_random_username
     "ゲストユーザー_#{SecureRandom.hex(3)}"
   end

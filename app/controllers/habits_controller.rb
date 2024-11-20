@@ -1,31 +1,26 @@
 class HabitsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_habit, only: %i[show edit update destroy]
+  before_action :set_habit, only: %i[show update destroy]
 
-  # GET /habits or /habits.json
   def index
     @habits = current_user.habits.includes(:weekly_plans)
     @habit = Habit.new  # @habitを新しく定義してエラーを防ぐ
     @weekly_plan = params[:weekly_plan] || []
   end
 
-  # GET /habits/new
   def new
     @habit = Habit.new
   end
 
-  # POST /habits or /habits.json
   def create
     @habit = current_user.habits.new(habit_params)
     if @habit.save
-      # 週間目標を計算
       @weekly_plan = calculate_habit_plan(
         @habit.target_date,
         @habit.target_frequency,
         @habit.target_volume_hours.to_i * 60 + @habit.target_volume_minutes.to_i
       )
 
-      # WeeklyPlanテーブルに保存
       @weekly_plan.each do |plan|
         WeeklyPlan.create!(
           habit: @habit,
@@ -36,14 +31,12 @@ class HabitsController < ApplicationController
         )
       end
 
-      # 週間目標を表示するためのビューにリダイレクト
       redirect_to habits_path, notice: "習慣目標が保存されました"
     else
       render :new
     end
   end
 
-  # PATCH/PUT /habits/1 or /habits/1.json
   def update
     respond_to do |format|
       if @habit.update(habit_params)
@@ -56,8 +49,6 @@ class HabitsController < ApplicationController
     end
   end
 
-  # DELETE /habits/1 or /habits/1.json
-  # app/controllers/habits_controller.rb
   def destroy
     @habit.destroy!
 
@@ -70,7 +61,6 @@ class HabitsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_habit
     @habit = Habit.find(params[:id])
   end

@@ -16,7 +16,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @profile.set_values(@omniauth)
       sign_in(:user, @profile)
     end
-    # ログイン後のflash messageとリダイレクト先を設定
     flash[:notice] = "ログインしました"
     redirect_to user_path(@profile)
   end
