@@ -39,7 +39,7 @@ https://step-by-step-app.com/<br>
 | マイページ  | LINE通知  |
 |------------|------------|
 | <p align="center"><img src="https://github.com/user-attachments/assets/6d59f63e-3924-49f9-b5dd-e5547589b666" width="225" height="450"> | <p align="center"><img src="https://github.com/user-attachments/assets/577816cb-6b19-4bcb-bfb8-f1a2fffe146d" width="225" height="450"> |
-| ・今週行う目標が表示されます<br>・達成ボタンを押すとカレンダーに進捗が記録されます | ・LINEログイン＆友達登録で目標更新をお知らせします。<br>・メッセージは更新日の朝8時にお送りします |
+| ・今週行う目標が表示されます<br>・達成ボタンを押すとカレンダーに進捗が記録されます | ・LINEログイン＆友達登録で目標更新をお知らせします<br>・メッセージは更新日の朝8時に送信されます |
 
 <br><br>
 
