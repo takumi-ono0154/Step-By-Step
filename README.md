@@ -1,6 +1,7 @@
 ## ■ アプリURL
-https://step-by-step-app.com/<br>
-ゲストログインでお試しいただけます
+~~https://step-by-step-app.com/<br>~~
+~~ゲストログインでお試しいただけます~~
+※2025/2/22 クローズ
 
 <br><br>
 
